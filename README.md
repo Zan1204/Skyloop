@@ -20,21 +20,37 @@ Materials:
 Laser Sensor module (LDR also works)
 
 Laser module
+
 Addressable WS2812b LED strip
+
 5V buzzer
+
 ESP-32
+
 5V power supply, adapter
+
 Voltage regulator (if the power supply is too strong)
+
 Wire rolls
+
 Jumper wires
+
 Wire cutter
+
 Small screwdriver
+
 Voltmeter
+
 Jute rope to hang the loops
+
 Feviquick for assembly
+
 White Acrylic Sheets
 
+
 Machines Used:
+
 Laser cutter
+
 Power Drills 
 
