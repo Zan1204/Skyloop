@@ -1,6 +1,7 @@
 # Skyloop
 
 Idea 
+
 A device shaped like a hexagonal loop that uses sensors to monitor the 3 laser signals. These sensors detect the passing of a drone (when the laser signal is interrupted), outputting this detection in the form of a buzzer and glowing LED strips in green.
 
 Problem Statement
@@ -17,6 +18,7 @@ The hexagonal loop would be powered by a 5V power supply along with an ESP-32 bo
 Materials:
 
 Laser Sensor module (LDR also works)
+
 Laser module
 Addressable WS2812b LED strip
 5V buzzer
