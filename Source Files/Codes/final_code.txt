@@ -1,0 +1,66 @@
+﻿#include <FastLED.h> //include library for led strips
+#define NUM_LEDS 10 //required setup
+#define DATA_PIN 33
+#define BRIGHTNESS 100 //variable for brightness
+CRGB leds[NUM_LEDS];
+
+
+int buzz = 5; //Digital pin # for other components
+int lazer = 4;
+//int lazer2 = 13;
+//int lazer3 = 15;
+
+
+void setup() {
+  Serial.begin(9600); //initiate serial monitor
+    //pinMode(buzz, OUTPUT);
+  FastLED.addLeds<WS2812, DATA_PIN, BRG>(leds, NUM_LEDS); //defining led strip model
+  FastLED.setBrightness(BRIGHTNESS);
+  pinMode(lazer, INPUT); //creating an input value from the lazer sensor
+  pinMode(buzz, OUTPUT);
+}
+
+
+void loop() {
+  int detect = digitalRead(lazer); //variables for detection of drone flying through the loop
+ // int detect2 = digitalRead(lazer2); //variables for all 3 sensors
+ // int detect3 = digitalRead(lazer3); //the third lazer has been given a variable for detection
+
+
+  if (detect == LOW) { //confirming whether the drone has been detected by any one of the lazer sensors
+    changeColour(CRGB::Green); //colour turn green
+    FastLED.show(); //makes sure that the led strip is on
+    digitalWrite(buzz, LOW);
+    delay(2000);
+    //Serial.println("detected"); //reported on the serial monitor
+    //delay(100); //delay to avoid serial monitor feedback spam
+
+
+  }// else if (detect2 == LOW) {
+    //changeColour(CRGB::Blue);
+   // FastLED.show();
+    //Serial.println("detected");
+    //delay(100);
+
+
+  //} //else if (detect3 == LOW) {
+    //changeColour(CRGB::Blue);
+    //FastLED.show();
+    //Serial.println("detected");
+    //delay(00);
+
+
+  //}
+   else {
+    changeColour(CRGB::Blue); //turns green if any one of the lazers has detected the drone flying through
+    FastLED.show();
+    digitalWrite(buzz, HIGH);
+    Serial.println("not detected"); //detection reported on the serial monitor
+    delay(100);
+  }
+}
+void changeColour(CRGB color) {
+  for (int i = 0; i < NUM_LEDS; i++) {
+    leds[i] = color;
+  }
+}
