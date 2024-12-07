@@ -1,0 +1,190 @@
+﻿DRONE SKYLOOP
+
+
+Source Files: https://github.com/Zan1204/Skyloop 
+
+
+Problem Statement
+To be able to make suspended loops, that can be used by beginners to learn the basics of flying and racing drones. A lot of people enjoy drones but don’t know how / are scared to fly them. This project helps them practice, get comfortable and enjoy the experience.
+
+
+Idea
+A device shaped like a hexagonal loop that uses sensors to monitor the 3 laser signals. These sensors detect the passing of a drone (when the laser signal is interrupted), outputting this detection in the form of a buzzer and glowing LED strips in green.
+
+
+________________
+
+
+Prototypes and rejected versions
+
+
+
+
+Sunboard prototype:
+  
+  
+  
+  
+
+* The intention behind this model was to test out the shape and the feasibility of assembling such a structure
+* We created this model using a rules, compass and paper cutter and then assembled the individual pieces using hot glue
+* This model was a 1:2 ratio of what we hoped the final product would be
+
+
+________________
+
+
+Cardboard prototype:
+
+
+  
+  
+  
+  
+
+
+
+* The intention behind the cardboard version of the model was to test the dimensions of the final structure and the abilities of the laser cutter
+* We laser cut this model on single layer cardboard and assembled it using hot glue in a 1:1 ratio
+________________
+Final Version (Acrylic):
+
+
+
+
+  
+
+
+
+   * The final model was laser cut in acrylic
+   * This model had the electronics and the lasers inbuilt to test out the full system 
+________________
+
+
+Final Project Idea/Solution
+
+
+The hexagonal loop would be powered by a 5V power supply along with an ESP-32 board. The base of the hexagonal loop is housed with 3 lasers pointing upwards, with the ray directly reaching the sensors mounted above. The buzzer can also be mounted on either edge as long as it is connected securely. When the drone passes through, the laser signal is interrupted, which transmits this data to the ESP-32. As the code follows, the LED strip would light up in green. The hexagonal loop has the LED strips glowing in blue when the drone is not detected. The code uses the FastLED library to code the LED strips.
+
+
+Objectives of the Project
+
+
+      * The LED strip turns on in blue
+      * Send a laser signal to the sensor mounted above
+      * Sensor reads value
+      * If the value is 0, the LED strip turns green
+      * Buzzer activates
+      * All code stops for 2 seconds, then returns to the sensor reading checking for laser signal value.
+      * If the value is 1, the LED strip remains blue.
+
+
+Block diagram based on objectives
+
+
+  
+
+
+
+Materials based on Block Diagram
+
+
+Sensors
+      * Laser Sensor module (LDR also works)
+      * Laser module
+
+
+Output
+      * Addressable WS2812b LED strip
+      * 5V buzzer
+
+
+Mirco-Controller
+      * ESP-32
+
+
+Power
+      * 5V power supply, adapter
+      * Voltage regulator (if the power supply is too strong)
+
+
+Other Hardware
+      * Wire rolls
+      * Jumper wires
+      * Wire cutter
+      * Small screwdriver
+      * Voltmeter
+      * Jute rope to hang the loops
+      * Feviquick for assembly
+
+
+Working of Individual block
+
+
+The skyloop functionality can be tested by creating test codes for each component; filtering out the unfunctional ones. The use of different components can also allow testing of code compatibility. We noticed that certain components were only functional under specific libraries.
+
+
+The process can be tested through several prototypes. Online prototypes or simulations can help test the coding logic, while paper prototypes can help test the stability and structure of the final sky loop. We could use cardboard prototypes to help create a circuit layout on the loop.
+________________
+
+
+Logic of the complete program
+
+
+The program is run by a simple if-loop. 
+
+
+The output of the loop if the criteria are met:
+The sensor readings are checked by the ESP-32. The criteria are met if any 1 sensor reading is 0, which means that the drone has been detected passing through the loop. In this case, the buzzer is activated, and the LED strip switches color to green. A delay of 2 seconds is used to show the detection, after which the ESP-32 goes back to checking the new sensor readings.
+
+
+The output of the loop if the criteria are not met:
+If all the sensor readings show 1, this indicates a steady laser signal for all 3 sensors. This shows no detection of the drone passing through, which means that the LED Strip remains blue. The buzzer is not activated and the ESP-32 goes back to check the sensor readings.
+
+
+
+
+Assembly and debugging
+
+
+Debugging:
+We started by making test codes for each component, to filter out the faulty components. After this, we created the final code, however the LED strip would not power up. We tried various changes like writing if-loops for each sensor, using different LED strip libraries, etc. however the LED strip still did not work. Eventually, we found the FastLED library, which happened to work for one of our LED strips. Through this strip, we tested our final code again, now using 1 if-loop for all sensors, and it worked! However, the power supply we were using was 12V and we needed to use 5V. To solve this, we used a voltage regulator to adjust the power, finally fixing our electrical circuit.
+________________
+
+
+Source Files Folders: https://github.com/Zan1204/Skyloop 
+
+
+      * Source Files
+      * Docs
+      * Main Project Document
+      * Technical Document
+      * Resource and reference list
+
+
+      * Images
+      * Brainstorming and paper prototyping Images
+      * Block diagram
+      * Sketches of custom parts (if required)
+      * Special Components
+      * Circuit diagram for testing individual component
+      * Circuit diagram for main project 
+      * Work in progress images
+      * Assembly Steps
+
+
+      * Videos
+      * Working of individual components and blocks
+      * Working of main project
+      * Assembly Video
+
+
+      * Codes
+      * Test code for individual components and blocks
+      * Final Project Code
+      * Libraries used
+
+
+      * CAD
+      * 3D printed part physical images, images, and CAD files
+      * Laser cut part images and cad files
